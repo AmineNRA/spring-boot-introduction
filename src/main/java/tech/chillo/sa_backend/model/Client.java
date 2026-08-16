@@ -1,5 +1,11 @@
 package tech.chillo.sa_backend.model;
 
+import java.sql.Date;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,6 +26,16 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String email;
+
     private String telephone;
+
+    @CreationTimestamp
+    @Column(nullable = false, updatable = false)
+    private Date creation;
+
+    @UpdateTimestamp
+    @Column(name = "MISE_A_JOUR", insertable = false)
+    private Date misAJour;
 }
